@@ -23,16 +23,15 @@
   </div> -->
 
 <input #NewTask1 type="text" [(ngModel)]="newTask">
+<BR>
 
-<button *ngIf="!isEdit" (click)="add(NewTask1.value)">Add</button>
-<br> <br>
-
-<button *ngIf="isEdit" (click)="save()">Save</button>
-<button *ngIf="isEdit"  (click)="cancel()">cancel</button>
+<button class="btn btn-primary" *ngIf="!isEdit" (click)="add(NewTask1.value)">Add</button>
+<button class="btn btn-primary" *ngIf="isEdit" (click)="save()">Save</button>
+<button class="btn btn-primary" *ngIf="isEdit"  (click)="cancel()">cancel</button>
 
 <ol>
     <li *ngFor="let task of todo; index as i;">{{task}}
-        <button (click)="remove(i)">Remove Task {{i}}</button>
+        <button  (click)="remove(i)">Remove Task {{i}}</button>
         <button (click)="edit(i)">Edit</button>
        
 
