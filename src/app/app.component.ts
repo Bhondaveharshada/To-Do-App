@@ -6,23 +6,48 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  user='';
-  pass='';
-  ans='';
-  check(){
-    if(this.user=='' && this.pass==''){
-      this.ans="na";
+
+  newTask ='';
+  todo: string[] = [];
+  isEdit:boolean=false;
+  currentTaskindex = 0;
+  
+  
+
+  add(newTask :string){
+    if(this.newTask == ''){
+      alert("plz enter taskitem");
     }
     
-    else if(this.user!='' && this.user=='admin'){
-      if(this.pass!='' && this.pass=='admin'){
-        this.ans="valid";
-      }
+    else{
+    this.todo.push(newTask);
+    this.newTask = '';
+    }
+   
+  }
+  remove(i:number){
+    if(this.todo.length ==0){
+    alert("no task to remove")
     }
     else{
-      this.ans='invalid';
+      this.todo.splice(i);
     }
-    console.log('ans',this.ans);
+  }
+  edit(i:number){
+    this.isEdit = true;
+    this.currentTaskindex = i;
+    this.newTask = this.todo[i];
+  }
+  save(){
+    this.todo[this.currentTaskindex]= this.newTask;
+    this.isEdit = false;
+    this.newTask= '';
+  }
+  cancel(){
+    this.isEdit=false;
+    this.newTask = '';
   }
 
+
 }
+
