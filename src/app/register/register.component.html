@@ -1,0 +1,92 @@
+<!--Firstname-->
+<div class="container">
+    <form [formGroup]="registerForm">
+        <div>
+            <label>FirstName</label>
+            <input formControlName="firstname" type="firstname" class="form-control" placeholder="Enter email">
+            <div *ngIf="this.registerForm.get('firstname')?.touched">
+                <small *ngIf="this.registerForm.get('firstname')?.errors?.['required']" class="text-danger">Plz..Enter
+                    at least 3 character
+                </small>
+                <small *ngIf="this.registerForm.get('firstname')?.errors?.['minlength']" class="text-danger">Plz..Enter
+                    at least 3 character
+                </small>
+            </div>
+        </div>
+        <!--FirstName-->
+
+        <!--Mobile Number-->
+        <div>
+            <label>Mobile Number</label>
+            <input formControlName="phonenumber" type="phonenumber" class="form-control"
+                placeholder="Enter Mobile number">
+            <div *ngIf="this.registerForm.get('phonenumber')?.touched">
+                <small *ngIf="this.registerForm.get('phonenumber')?.errors?.['required']" class="text-danger">Plz..Enter
+                    Mobile number
+
+                </small>
+                <small *ngIf="this.registerForm.get('phonenumber')?.errors?.['maxlength']" class="text-danger">Mobile
+                    number must be 10 digit
+                </small>
+                <small *ngIf="this.registerForm.get('phonenumber')?.errors?.['minlength']" class="text-danger">Mobile
+                    number must be 10 digit
+                </small>
+
+
+                <small *ngIf="this.registerForm.get('phonenumber')?.errors?.['pattern']" class="text-danger"> and must
+                    contain digits
+                </small>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+        <!--Email-->
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input formControlName="email" type="email" class="form-control" aria-describedby="emailHelp"
+                placeholder="Enter email">
+            <div *ngIf="this.registerForm.get('email')?.touched">
+
+                <small *ngIf="this.registerForm.get('email')?.errors?.['required']" class="text-danger">Plz..Enter your
+                    email</small>
+                <small *ngIf="this.registerForm.get('email')?.errors?.['email']" class="text-danger">Plz..Enter your
+                    email</small>
+            </div>
+        </div>
+        <!--email-->
+
+        <!--Password-->
+        <div class="form-group">
+            <label>Password</label>
+            <input formControlName="password" type="password" class="form-control" id="exampleInputPassword1"
+                placeholder="Password">
+            <div *ngIf="this.registerForm.get('password')?.touched">
+                <small *ngIf="this.registerForm.get('password')?.errors?.['required']" class="text-danger">plz..enter
+                    password
+                </small>
+                <small *ngIf="this.registerForm.get('password')?.errors?.['pattern']" class="text-danger">Password must
+                    contain at least one lowercase letter, one uppercase letter, one digit, and be at least 8 characters
+                    long.
+                </small>
+            </div>
+        </div>
+
+        <!--Gender-->
+        <div class="form-group">
+            <label>Gender:</label><br>
+            <input formControlName="gender" type="radio" class="" value="Male">Male<br>
+            <input formControlName="gender" type="radio" value="female" >Female
+        </div>        
+
+
+
+
+        <button (click)="register()" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
